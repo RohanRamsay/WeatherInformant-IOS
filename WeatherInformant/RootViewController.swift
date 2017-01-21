@@ -17,7 +17,7 @@ class RootViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        //self.performSegue(withIdentifier: "LaunchLoginPage", sender: self)
+        self.performSegue(withIdentifier: "LaunchLoginPage", sender: self)
 
     
     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		181C29C61E33173A006DAB0D /* SignUpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181C29C51E33173A006DAB0D /* SignUpTableViewController.swift */; };
 		184D6C431E32080700C6D7EF /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D6C421E32080700C6D7EF /* AccountViewController.swift */; };
 		184D6C451E320AFA00C6D7EF /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D6C441E320AFA00C6D7EF /* MenuTableViewController.swift */; };
 		184D6C481E32104700C6D7EF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 184D6C471E32104700C6D7EF /* MapKit.framework */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		181C29C51E33173A006DAB0D /* SignUpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpTableViewController.swift; sourceTree = "<group>"; };
 		184D6C421E32080700C6D7EF /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		184D6C441E320AFA00C6D7EF /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		184D6C471E32104700C6D7EF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -116,6 +118,7 @@
 				184D6C4A1E32152300C6D7EF /* HomeViewController.swift */,
 				184D6C551E322AA700C6D7EF /* WidgetTableViewController.swift */,
 				184D6C571E322D0400C6D7EF /* LoginViewController.swift */,
+				181C29C51E33173A006DAB0D /* SignUpTableViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				187FBDDA1E31C65200AF54FC /* AppDelegate.swift in Sources */,
 				184D6C451E320AFA00C6D7EF /* MenuTableViewController.swift in Sources */,
 				184D6C4F1E32290000C6D7EF /* ContactUsViewController.swift in Sources */,
+				181C29C61E33173A006DAB0D /* SignUpTableViewController.swift in Sources */,
 				184D6C561E322AA700C6D7EF /* WidgetTableViewController.swift in Sources */,
 				184D6C431E32080700C6D7EF /* AccountViewController.swift in Sources */,
 				187FBE121E31EEF600AF54FC /* SWRevealViewController.m in Sources */,

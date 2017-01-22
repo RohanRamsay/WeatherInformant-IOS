@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		181C29C61E33173A006DAB0D /* SignUpTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181C29C51E33173A006DAB0D /* SignUpTableViewController.swift */; };
 		182885951E34414800C2D4C3 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182885941E34414800C2D4C3 /* WeatherService.swift */; };
+		182E9E9E1E348273006B41AA /* WeatherInformantBackendService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182E9E9D1E348273006B41AA /* WeatherInformantBackendService.swift */; };
 		184D6C431E32080700C6D7EF /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D6C421E32080700C6D7EF /* AccountViewController.swift */; };
 		184D6C451E320AFA00C6D7EF /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184D6C441E320AFA00C6D7EF /* MenuTableViewController.swift */; };
 		184D6C481E32104700C6D7EF /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 184D6C471E32104700C6D7EF /* MapKit.framework */; };
@@ -52,6 +53,7 @@
 		06BB4E488F78F9BB805B9F77 /* Pods_WeatherInformant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherInformant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		181C29C51E33173A006DAB0D /* SignUpTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpTableViewController.swift; sourceTree = "<group>"; };
 		182885941E34414800C2D4C3 /* WeatherService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		182E9E9D1E348273006B41AA /* WeatherInformantBackendService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherInformantBackendService.swift; sourceTree = "<group>"; };
 		184D6C421E32080700C6D7EF /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		184D6C441E320AFA00C6D7EF /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		184D6C471E32104700C6D7EF /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -132,6 +134,7 @@
 				184D6C571E322D0400C6D7EF /* LoginViewController.swift */,
 				181C29C51E33173A006DAB0D /* SignUpTableViewController.swift */,
 				182885941E34414800C2D4C3 /* WeatherService.swift */,
+				182E9E9D1E348273006B41AA /* WeatherInformantBackendService.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -398,7 +401,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -416,6 +419,7 @@
 				184D6C4F1E32290000C6D7EF /* ContactUsViewController.swift in Sources */,
 				182885951E34414800C2D4C3 /* WeatherService.swift in Sources */,
 				181C29C61E33173A006DAB0D /* SignUpTableViewController.swift in Sources */,
+				182E9E9E1E348273006B41AA /* WeatherInformantBackendService.swift in Sources */,
 				184D6C561E322AA700C6D7EF /* WidgetTableViewController.swift in Sources */,
 				184D6C431E32080700C6D7EF /* AccountViewController.swift in Sources */,
 				187FBE121E31EEF600AF54FC /* SWRevealViewController.m in Sources */,

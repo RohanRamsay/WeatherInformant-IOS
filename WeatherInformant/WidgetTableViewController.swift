@@ -7,19 +7,31 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class WidgetTableViewController: UITableViewController {
 
+    var rows : [JSON?] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        self.searchDisplayController?.searchResultsTableView.register(WeatherWidgetCell.self, forCellReuseIdentifier: "WidgetCell")
        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.addTarget(self, action: #selector(WidgetTableViewController.refreshTableContents), for: .valueChanged)
+       
+        WeatherInformantBackendService.getAllWeatherWidgets(completionHandler: self.populateTable(jsonData: ))
+    }
+    
+    func refreshTableContents(){
+        
+        WeatherInformantBackendService.getAllWeatherWidgets(completionHandler: self.populateTable(jsonData: ), errorHandler: {
+        
+            _ in
+            self.refreshControl?.endRefreshing()
+        })
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,7 +39,9 @@ class WidgetTableViewController: UITableViewController {
         
         //setup slide out menu
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+
     }
+    
     @IBAction func slideOutBarButtonClicked(_ sender: Any) {
         
         self.revealViewController()?.revealToggle(self)
@@ -35,66 +49,51 @@ class WidgetTableViewController: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+
+        return rows.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WidgetCell", for: indexPath) as! WeatherWidgetCell
 
-        // Configure the cell...
 
+        cell.titleLabel.text = self.rows[indexPath.row]?["title"].description
+        cell.idLabel.text = self.rows[indexPath.row]?["apiid"].description
+        cell.statusLabel.text = self.rows[indexPath.row]?["status"].description
+        cell.descriptionLabel.text = self.rows[indexPath.row]?["description"].description
+        cell.priceLabel.text = self.rows[indexPath.row]?["price"].description
+        
+        if cell.statusLabel.text == "free" {
+         
+            cell.buyButton.isHidden = true
+            cell.priceLabel.isHidden = true
+            cell.dollarLabel.isHidden = true
+            
+        }
+        else{
+            
+            cell.buyButton.isHidden = false
+            cell.priceLabel.isHidden = false
+            cell.dollarLabel.isHidden = false
+        }
+        
         return cell
     }
-    */
+    
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+    
     /*
     // MARK: - Navigation
 
@@ -104,5 +103,30 @@ class WidgetTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func populateTable(jsonData: [JSON]?){
+        
+        self.refreshControl?.endRefreshing()
+
+        if let rows = jsonData{
+        
+            self.rows = rows
+            
+            self.tableView.reloadData()
+        }
+    }
+
+}
+
+
+class WeatherWidgetCell : UITableViewCell {
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var dollarLabel: UILabel!
+    @IBOutlet weak var buyButton: UIButton!
 
 }

@@ -26,7 +26,43 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IOY-qa-5wi">
+                                <rect key="frame" x="32" y="302" width="310" height="64"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather Informant" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJu-jk-SsF">
+                                        <rect key="frame" x="20" y="10" width="198" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="B33-J7-j31"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="thunder-128" translatesAutoresizingMaskIntoConstraints="NO" id="MeM-uK-BGm">
+                                        <rect key="frame" x="226" y="0.0" width="64" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="BPF-9J-a4V"/>
+                                            <constraint firstAttribute="width" constant="64" id="eA5-1u-rMU"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="pJu-jk-SsF" firstAttribute="centerY" secondItem="MeM-uK-BGm" secondAttribute="centerY" id="4I4-GT-0mD"/>
+                                    <constraint firstItem="MeM-uK-BGm" firstAttribute="top" secondItem="IOY-qa-5wi" secondAttribute="top" id="N32-9S-xu7"/>
+                                    <constraint firstItem="pJu-jk-SsF" firstAttribute="leading" secondItem="IOY-qa-5wi" secondAttribute="leading" constant="20" id="Rz1-8V-9Kc"/>
+                                    <constraint firstItem="MeM-uK-BGm" firstAttribute="leading" secondItem="pJu-jk-SsF" secondAttribute="trailing" constant="8" id="WIl-Yw-Y5U"/>
+                                    <constraint firstAttribute="bottom" secondItem="MeM-uK-BGm" secondAttribute="bottom" id="eYN-Hm-fJW"/>
+                                    <constraint firstAttribute="trailing" secondItem="MeM-uK-BGm" secondAttribute="trailing" constant="20" id="hsy-Hl-ewI"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="0.89255583469999999" green="0.93625415700000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="IOY-qa-5wi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ejP-xV-4qY"/>
+                            <constraint firstItem="IOY-qa-5wi" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="rO0-wd-STY"/>
+                        </constraints>
                     </view>
                     <connections>
                         <segue destination="Vst-Od-NzB" kind="show" identifier="LaunchHomePage" id="mNH-Jd-cwn"/>
@@ -158,7 +194,7 @@
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DXs-HH-IHB" id="C6G-ac-d7G">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -241,7 +277,7 @@
                                         <rect key="frame" x="0.0" y="68" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qJa-rU-rY9" id="Uuf-H0-8pE">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWP-lz-ZN9">
@@ -258,7 +294,7 @@
                                         <rect key="frame" x="0.0" y="112" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Wft-2d-z9e" id="3ko-z1-Y8o">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Usage Statistics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H54-jn-1Km">
@@ -279,7 +315,7 @@
                                         <rect key="frame" x="0.0" y="192" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KpK-Tq-CtS" id="wVs-qg-o8c">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csr-aX-ex3">
@@ -296,7 +332,7 @@
                                         <rect key="frame" x="0.0" y="236" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JVp-48-GdU" id="Far-Qh-mUV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Privacy Policy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TnZ-kd-ez8">
@@ -313,7 +349,7 @@
                                         <rect key="frame" x="0.0" y="280" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rUM-E1-ThA" id="mkA-Sf-2q0">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contact Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xjo-oi-KPF">
@@ -772,7 +808,6 @@ Te Kura Mātai Pūkaha, Pūrorohiko</string>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="tIH-Tb-W7s" eventType="touchUpInside" id="vj2-Wi-mlM"/>
-                                    <segue destination="Vst-Od-NzB" kind="show" id="j9E-xx-Coc"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Mhm-wH-3Oi">
@@ -906,7 +941,7 @@ Te Kura Mātai Pūkaha, Pūrorohiko</string>
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8yH-Fn-Ud2" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="eUm-F1-MqD">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eUm-F1-MqD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.89255583469999999" green="0.93625415700000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1243,7 +1278,4 @@ Te Kura Mātai Pūkaha, Pūrorohiko</string>
         <image name="ic_menu_black_24dp" width="24" height="24"/>
         <image name="thunder-128" width="64" height="64"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="j9E-xx-Coc"/>
-    </inferredMetricsTieBreakers>
 </document>

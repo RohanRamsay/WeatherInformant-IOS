@@ -15,11 +15,16 @@ class RootViewController: UIViewController {
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        
+        
         super.viewDidAppear(animated)
         
+        //if not logged in
         self.performSegue(withIdentifier: "LaunchLoginPage", sender: self)
 
-    
+        //else
+       // self.performSegue(withIdentifier: "LaunchHomePage", sender: self)
+        
     }
     
     override func didReceiveMemoryWarning() {

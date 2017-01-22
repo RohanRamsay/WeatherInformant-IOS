@@ -74,10 +74,14 @@ class SignUpTableViewController: UITableViewController {
         if self.performValidityCheck(){
             //all valid
             
-            //return
+            //if sign up successful - login - dismiss login vc - go to root.
+            self.navigationController?.dismiss(animated: true){
+                
+                self.navigationController?.presentingViewController?.dismiss(animated: true, completion: nil)
+            }
+            return
         }
         
-            
             self.tableView.reloadData()
         
     }
@@ -114,6 +118,10 @@ class SignUpTableViewController: UITableViewController {
             self.confirmPasswordError.isHidden = false
             self.confirmPasswordError.text = "Passwords do not match"
             return false
+        }
+        else{
+            self.errorStatus[5] = false
+            self.confirmPasswordError.isHidden = true
         }
         return true
     }

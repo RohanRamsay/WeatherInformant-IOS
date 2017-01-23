@@ -16,15 +16,17 @@ class RootViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         
-        
         super.viewDidAppear(animated)
         
-        //if not logged in
-        self.performSegue(withIdentifier: "LaunchLoginPage", sender: self)
-
-        //else
-       // self.performSegue(withIdentifier: "LaunchHomePage", sender: self)
         
+        if UserDefaults.standard.value(forKey: "userid") != nil && UserDefaults.standard.value(forKey: "password") != nil {
+            
+            self.performSegue(withIdentifier: "LaunchHomePage", sender: self)
+        }
+        else{
+            //if not logged in
+            self.performSegue(withIdentifier: "LaunchLoginPage", sender: self)
+        }
     }
     
     override func didReceiveMemoryWarning() {

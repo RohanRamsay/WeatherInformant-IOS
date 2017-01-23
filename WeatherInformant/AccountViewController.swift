@@ -26,6 +26,23 @@ class AccountViewController: UIViewController {
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func logout(_ sender: Any) {
+        
+               
+        UserDefaults.standard.removeObject(forKey: "userid")
+        UserDefaults.standard.removeObject(forKey: "firstname")
+        UserDefaults.standard.removeObject(forKey: "lastname")
+        UserDefaults.standard.removeObject(forKey: "password")
+        UserDefaults.standard.removeObject(forKey: "role")
+        UserDefaults.standard.removeObject(forKey: "email")
+        UserDefaults.standard.removeObject(forKey: "joinedon")
+        UserDefaults.standard.synchronize()
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "RootViewController")
+        
+        UIApplication.shared.keyWindow?.rootViewController = controller
+    }
     /*
     // MARK: - Navigation
 

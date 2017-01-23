@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class LoginViewController: UIViewController {
     
@@ -52,27 +53,38 @@ class LoginViewController: UIViewController {
         hideKeyboard()
         
         if hasLocalError() {
-
+            
             return
         }
         
         if let username = usernameTextField.text {
             if let password = passwordTextField.text{
-             
-                //attempt login
                 
-                //if login successful  - dismiss - root VC will redirect to home
-                self.dismiss(animated: true, completion: nil)
+                //attempt login
+                WeatherInformantBackendService.login(username: username,
+                                                     password: password,
+                                                     completionHandler: {
+                                                        
+                                                        user in
+                                                        
+                                                        self.saveLoggedInUser(user: user)
+                                                        
+                                                        //if login successful  - dismiss - root VC will redirect to home
+                                                        self.dismiss(animated: true, completion: nil)
+                },
+                                                     errorHandler: self.showAlertWith(message:))
+                
+                
+                
             }
         }
     }
     
-        
+    
     
     //MARK: UITextFieldDelegate
     func textFieldDidBeginEditing(_ textField: UITextField!) {
-      
-        _ = self.hasLocalError()
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField!) -> Bool {
@@ -87,9 +99,29 @@ class LoginViewController: UIViewController {
         return true
     }
     
+    func showAlertWith(message: String?){
+        
+        let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     
     
-    
+    func saveLoggedInUser( user: JSON?){
+     
+        //to simulate cookies
+        UserDefaults.standard.set(user?["userid"].description, forKey: "userid")
+        UserDefaults.standard.set(user?["firstname"].description, forKey: "firstname")
+        UserDefaults.standard.set(user?["lastname"].description, forKey: "lastname")
+        UserDefaults.standard.set(user?["password"].description, forKey: "password")
+        UserDefaults.standard.set(user?["role"].description, forKey: "role")
+        UserDefaults.standard.set(user?["email"].description, forKey: "email")
+        UserDefaults.standard.set(user?["joinedon"].object, forKey: "joinedon")
+
+        UserDefaults.standard.synchronize()
+    }
     
     func hasLocalError()->Bool {
         var hasError = false
@@ -134,7 +166,7 @@ class LoginViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-
+    
     func keyboardDidShow(notification: NSNotification) {
         
         if !keyboardUp{

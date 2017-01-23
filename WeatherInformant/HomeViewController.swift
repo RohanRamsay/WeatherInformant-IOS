@@ -35,7 +35,12 @@ class HomeViewController: UITableViewController, CLLocationManagerDelegate {
         
         locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        locationManager.stopUpdatingLocation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +48,9 @@ class HomeViewController: UITableViewController, CLLocationManagerDelegate {
         
         //setup slide out menu
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
+        
+        locationManager.startUpdatingLocation()
+
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

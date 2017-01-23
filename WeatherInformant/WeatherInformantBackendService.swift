@@ -65,9 +65,43 @@ class WeatherInformantBackendService{
                     completionHandler?(response.value)
                 }
             }
-            
         }
-        
     }
+    
+    
+    static func signup(username: String, password: String, firstname : String, lastname: String, email : String,  completionHandler : ((JSON?) -> Void)? = nil, errorHandler : ((String?) -> Void)? = nil ){
+        
+        let parameters = ["username" : username,
+                          "password" : password,
+                          "firstname" : firstname,
+                          "lastname" : lastname,
+                          "email": email]
+        
+        
+        let url = baseUrl + "RESTsignup"
+        
+        Alamofire.request(url, method: .post, parameters: parameters).responseSwiftyJSON{
+            
+            response in
+            
+            if response.error != nil {
+                
+                errorHandler?(response.error?.localizedDescription)
+            }
+            else{
+                
+                if response.response?.statusCode != 200 {
+                    
+                    errorHandler?(response.value?["detail"].description)
+                    
+                }
+                else{
+                    
+                    completionHandler?(response.value)
+                }
+            }
+        }
+    }
+
 }
 

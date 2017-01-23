@@ -70,20 +70,37 @@ class SignUpTableViewController: UITableViewController {
     @IBAction func signupButtonClick(_ sender: Any) {
         
         self.view.endEditing(true)
-        
+       
         if self.performValidityCheck(){
             //all valid
             
-            //if sign up successful - login - dismiss login vc - go to root.
-            self.navigationController?.dismiss(animated: true){
-                
-                self.navigationController?.presentingViewController?.dismiss(animated: true, completion: nil)
-            }
+            WeatherInformantBackendService.signup(username: self.usernameField.text!,
+                                                  password: self.passwordField.text!,
+                                                  firstname: self.firstnameField.text!,
+                                                  lastname: self.lastnameField.text!,
+                                                  email: self.emailField.text!,
+                                                  completionHandler: {
+                                                    
+                                                    _ in
+                                                    
+                                                    self.saveLoggedInUser()
+                                                    //if sign up successful - login - dismiss login vc - go to root.
+                                                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                                    let controller = storyboard.instantiateViewController(withIdentifier: "RootViewController")
+                                                    
+                                                    UIApplication.shared.keyWindow?.rootViewController = controller
+            },
+                                                  errorHandler: {
+                                                    
+                                                    errorMsg in
+                                                    
+                                                    self.showAlertWith(message: errorMsg)
+            })
+            
             return
         }
         
             self.tableView.reloadData()
-        
     }
     
     
@@ -211,6 +228,30 @@ class SignUpTableViewController: UITableViewController {
         return emailTest.evaluate(with: self.emailField.text)
     }
     
+    
+    func saveLoggedInUser( ){
+        
+        //to simulate cookies
+        UserDefaults.standard.set(self.usernameField.text, forKey: "userid")
+        UserDefaults.standard.set(self.firstnameField.text, forKey: "firstname")
+        UserDefaults.standard.set(self.lastnameField.text, forKey: "lastname")
+        UserDefaults.standard.set(self.passwordField.text, forKey: "password")
+        UserDefaults.standard.set("user", forKey: "role")
+        UserDefaults.standard.set(self.emailField.text, forKey: "email")
+        UserDefaults.standard.set(Date(), forKey: "joinedon")
+        
+        UserDefaults.standard.synchronize()
+    }
+    
+    func showAlertWith(message: String?){
+        
+        let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+
 }
 
 

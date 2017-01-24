@@ -10,10 +10,12 @@ import UIKit
 
 class UsageViewController: UIViewController {
 
+    @IBOutlet weak var webView: UIWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.webView.loadRequest(URLRequest(url: URL(string: "https://weather-informant.herokuapp.com/adminStats.html")!))
     }
 
     override func didReceiveMemoryWarning() {

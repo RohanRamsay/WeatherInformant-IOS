@@ -10,6 +10,8 @@ import UIKit
 
 class SignUpTableViewController: UITableViewController {
 
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+
     
     @IBOutlet weak var usernameField: UITextField!
     
@@ -42,6 +44,7 @@ class SignUpTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.spinner.isHidden = true
     }
     
     
@@ -74,6 +77,10 @@ class SignUpTableViewController: UITableViewController {
         if self.performValidityCheck(){
             //all valid
             
+            self.spinner.isHidden = false
+            self.view.isUserInteractionEnabled = false
+            
+            
             WeatherInformantBackendService.signup(username: self.usernameField.text!,
                                                   password: self.passwordField.text!,
                                                   firstname: self.firstnameField.text!,
@@ -82,6 +89,9 @@ class SignUpTableViewController: UITableViewController {
                                                   completionHandler: {
                                                     
                                                     _ in
+                                                    
+                                                    self.spinner.isHidden = true
+                                                    self.view.isUserInteractionEnabled = true
                                                     
                                                     self.saveLoggedInUser()
                                                     //if sign up successful - login - dismiss login vc - go to root.

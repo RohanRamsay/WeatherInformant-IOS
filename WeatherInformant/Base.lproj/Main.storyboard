@@ -147,7 +147,7 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
-                                <outlet property="delegate" destination="Pht-XR-si7" id="rTo-pi-bml"/>
+                                <outlet property="delegate" destination="Pht-XR-si7" id="zBh-Lg-paX"/>
                             </connections>
                         </searchBar>
                         <view key="tableFooterView" contentMode="scaleToFill" id="Oc2-zy-bn4">
@@ -198,7 +198,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cvk-m7-iay">
-                                                    <rect key="frame" x="62" y="120" width="50" height="36"/>
+                                                    <rect key="frame" x="62" y="119.5" width="50" height="36"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="fgD-0s-qxX"/>
                                                         <constraint firstAttribute="height" constant="36" id="nzN-IR-gVz"/>
@@ -310,6 +310,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="searchBar" destination="rfL-0d-3LQ" id="ig1-b8-3XJ"/>
                         <outlet property="searchDisplayController" destination="h5r-zx-VCC" id="1fp-kV-Z3a"/>
                     </connections>
                 </tableViewController>
@@ -317,7 +318,6 @@
                 <searchDisplayController id="h5r-zx-VCC">
                     <connections>
                         <outlet property="delegate" destination="Pht-XR-si7" id="fSu-I1-e0l"/>
-                        <outlet property="searchBar" destination="rfL-0d-3LQ" id="M8Y-0s-snL"/>
                         <outlet property="searchContentsController" destination="Pht-XR-si7" id="k2t-Ft-0AL"/>
                         <outlet property="searchResultsDataSource" destination="Pht-XR-si7" id="CyK-Xq-9tY"/>
                         <outlet property="searchResultsDelegate" destination="Pht-XR-si7" id="d6S-xO-iSg"/>
@@ -892,7 +892,19 @@
                     <view key="view" contentMode="scaleToFill" id="Dl7-tM-UT1">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aor-q4-uBZ">
+                                <rect key="frame" x="16" y="72" width="343" height="543"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aor-q4-uBZ" firstAttribute="trailing" secondItem="Dl7-tM-UT1" secondAttribute="trailingMargin" id="QaK-ci-WvZ"/>
+                            <constraint firstItem="aor-q4-uBZ" firstAttribute="leading" secondItem="Dl7-tM-UT1" secondAttribute="leadingMargin" id="e76-2a-w0X"/>
+                            <constraint firstItem="pNT-iS-lKM" firstAttribute="top" secondItem="aor-q4-uBZ" secondAttribute="bottom" constant="8" id="qrf-Y0-GQy"/>
+                            <constraint firstItem="aor-q4-uBZ" firstAttribute="top" secondItem="m3N-Ct-zJb" secondAttribute="bottom" constant="8" id="sfz-Fd-PHt"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Usage" id="rVo-8d-lHM">
@@ -903,10 +915,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="webView" destination="aor-q4-uBZ" id="MyN-Ua-WLO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Axf-3O-79W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4262" y="836"/>
+            <point key="canvasLocation" x="4261.6000000000004" y="834.33283358320841"/>
         </scene>
         <!--Contact Us-->
         <scene sceneID="oIO-Qn-GTp">
@@ -1240,6 +1255,10 @@ Te Kura Mātai Pūkaha, Pūrorohiko</string>
                                     <constraint firstAttribute="trailing" secondItem="Hsf-yv-htm" secondAttribute="trailing" constant="20" id="ugi-9U-GuN"/>
                                 </constraints>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="7mJ-B5-VJg">
+                                <rect key="frame" x="169" y="178" width="37" height="37"/>
+                                <color key="color" red="0.091921859290000005" green="0.11584895219999999" blue="0.3118864529" alpha="1" colorSpace="calibratedRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.89255583469999999" green="0.93625415700000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1264,6 +1283,7 @@ Te Kura Mātai Pūkaha, Pūrorohiko</string>
                             <constraint firstItem="qKb-GO-eJQ" firstAttribute="top" secondItem="7hR-Hu-38p" secondAttribute="bottom" constant="5" id="RVU-zs-GRM"/>
                             <constraint firstItem="fX7-MP-SxH" firstAttribute="centerX" secondItem="Mhm-wH-3Oi" secondAttribute="centerX" id="Smi-dV-tiZ"/>
                             <constraint firstItem="JhF-Uj-hR7" firstAttribute="top" secondItem="qKb-GO-eJQ" secondAttribute="bottom" constant="15" id="UDv-gY-YN8"/>
+                            <constraint firstItem="7mJ-B5-VJg" firstAttribute="top" secondItem="aIz-BJ-c0p" secondAttribute="bottom" id="aPX-m2-CHa"/>
                             <constraint firstItem="7hR-Hu-38p" firstAttribute="leading" secondItem="WOd-Qr-R6m" secondAttribute="leading" constant="15" id="d33-Jk-94n"/>
                             <constraint firstItem="JhF-Uj-hR7" firstAttribute="leading" secondItem="WOd-Qr-R6m" secondAttribute="leading" constant="15" id="ldZ-wU-dmL"/>
                             <constraint firstItem="fX7-MP-SxH" firstAttribute="leading" secondItem="WOd-Qr-R6m" secondAttribute="leadingMargin" id="nNg-Hp-Skf"/>
@@ -1271,6 +1291,7 @@ Te Kura Mātai Pūkaha, Pūrorohiko</string>
                             <constraint firstItem="Mhm-wH-3Oi" firstAttribute="top" secondItem="aIz-BJ-c0p" secondAttribute="bottom" constant="50" id="pR9-B3-HM3"/>
                             <constraint firstItem="VOO-9j-SqT" firstAttribute="leading" secondItem="WOd-Qr-R6m" secondAttribute="leadingMargin" id="qQA-R7-kXG"/>
                             <constraint firstItem="E9L-gS-ADy" firstAttribute="leading" secondItem="WOd-Qr-R6m" secondAttribute="leadingMargin" id="s9U-N3-GCB"/>
+                            <constraint firstItem="7mJ-B5-VJg" firstAttribute="centerX" secondItem="WOd-Qr-R6m" secondAttribute="centerX" id="t4D-u0-3Q5"/>
                             <constraint firstItem="qFs-wm-quK" firstAttribute="leading" secondItem="WOd-Qr-R6m" secondAttribute="leadingMargin" id="trC-vI-aR3"/>
                             <constraint firstItem="VOO-9j-SqT" firstAttribute="top" secondItem="7hR-Hu-38p" secondAttribute="bottom" id="xas-Wi-eEO"/>
                             <constraint firstAttribute="trailing" secondItem="JhF-Uj-hR7" secondAttribute="trailing" constant="15" id="z6f-V7-Z61"/>
@@ -1286,6 +1307,7 @@ Te Kura Mātai Pūkaha, Pūrorohiko</string>
                         <outlet property="passwordErrorHeight" destination="Ttq-Rj-OQO" id="xDe-dS-Xbu"/>
                         <outlet property="passwordErrorLabel" destination="qKb-GO-eJQ" id="DeD-yS-RgC"/>
                         <outlet property="passwordTextField" destination="7hR-Hu-38p" id="LEr-4b-0So"/>
+                        <outlet property="spinner" destination="7mJ-B5-VJg" id="VoR-s6-9sD"/>
                         <outlet property="txtFieldTopLayout" destination="pR9-B3-HM3" id="Edh-YN-V2y"/>
                         <outlet property="userNameErrorLabel" destination="ZkN-1y-36W" id="Gc9-pl-8CY"/>
                         <outlet property="usernameErrorHeight" destination="P2H-ZW-TuB" id="5dn-7F-eIk"/>
@@ -1325,14 +1347,11 @@ Te Kura Mātai Pūkaha, Pūrorohiko</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.89255583469999999" green="0.93625415700000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="5zf-g8-h3q">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather Informant" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LTh-iJ-hGw">
                                     <rect key="frame" x="20" y="10" width="263" height="44"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="44" id="3h9-cc-mHk"/>
-                                    </constraints>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -1340,23 +1359,28 @@ Te Kura Mātai Pūkaha, Pūrorohiko</string>
                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="thunder-128" translatesAutoresizingMaskIntoConstraints="NO" id="bwU-K1-MAy">
                                     <rect key="frame" x="291" y="0.0" width="64" height="64"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="64" id="AQu-Ub-a1m"/>
-                                        <constraint firstAttribute="height" constant="64" id="bxL-Fx-g4I"/>
+                                        <constraint firstAttribute="width" constant="64" id="EjQ-sP-cOv"/>
                                     </constraints>
                                 </imageView>
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="4hE-hO-qxf">
+                                    <rect key="frame" x="169" y="47" width="37" height="37"/>
+                                    <color key="color" red="0.091921859290000005" green="0.11584895219999999" blue="0.3118864529" alpha="1" colorSpace="calibratedRGB"/>
+                                </activityIndicatorView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="bwU-K1-MAy" secondAttribute="trailing" constant="20" id="3Hq-pW-V0z"/>
-                                <constraint firstItem="bwU-K1-MAy" firstAttribute="top" secondItem="5zf-g8-h3q" secondAttribute="top" id="76D-cW-WVl"/>
-                                <constraint firstItem="bwU-K1-MAy" firstAttribute="leading" secondItem="LTh-iJ-hGw" secondAttribute="trailing" constant="8" id="9cO-lG-9GF"/>
-                                <constraint firstItem="LTh-iJ-hGw" firstAttribute="centerY" secondItem="bwU-K1-MAy" secondAttribute="centerY" id="IE4-Z2-zAz"/>
-                                <constraint firstItem="LTh-iJ-hGw" firstAttribute="leading" secondItem="5zf-g8-h3q" secondAttribute="leading" constant="20" id="eh6-aK-cig"/>
-                                <constraint firstAttribute="bottom" secondItem="bwU-K1-MAy" secondAttribute="bottom" id="zZq-BT-QsM"/>
+                                <constraint firstItem="bwU-K1-MAy" firstAttribute="top" secondItem="5zf-g8-h3q" secondAttribute="top" id="0Pn-KB-1um"/>
+                                <constraint firstItem="LTh-iJ-hGw" firstAttribute="leading" secondItem="5zf-g8-h3q" secondAttribute="leading" constant="20" id="1Ct-ko-a04"/>
+                                <constraint firstAttribute="bottom" secondItem="4hE-hO-qxf" secondAttribute="bottom" id="1vs-u0-Kfo"/>
+                                <constraint firstItem="LTh-iJ-hGw" firstAttribute="top" secondItem="5zf-g8-h3q" secondAttribute="top" constant="10" id="BKc-gJ-VNB"/>
+                                <constraint firstItem="bwU-K1-MAy" firstAttribute="leading" secondItem="LTh-iJ-hGw" secondAttribute="trailing" constant="8" symbolic="YES" id="Ggk-00-B6N"/>
+                                <constraint firstItem="LTh-iJ-hGw" firstAttribute="centerY" secondItem="bwU-K1-MAy" secondAttribute="centerY" id="Qw4-by-uIh"/>
+                                <constraint firstAttribute="trailing" secondItem="bwU-K1-MAy" secondAttribute="trailing" constant="20" id="XtR-FB-LFP"/>
+                                <constraint firstItem="4hE-hO-qxf" firstAttribute="centerX" secondItem="5zf-g8-h3q" secondAttribute="centerX" id="eui-S1-o25"/>
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="ofF-ms-wW1">
-                            <rect key="frame" x="0.0" y="328" width="375" height="68"/>
+                            <rect key="frame" x="0.0" y="348" width="375" height="68"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m80-VF-S6N">
@@ -1396,7 +1420,7 @@ Te Kura Mātai Pūkaha, Pūrorohiko</string>
                             <tableViewSection id="cu5-Yo-5Z0">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="1Ys-Ak-wap">
-                                        <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="84" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Ys-Ak-wap" id="Qys-fT-Rap">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1430,7 +1454,7 @@ Te Kura Mātai Pūkaha, Pūrorohiko</string>
                                         <color key="backgroundColor" red="0.89255583469999999" green="0.93625415700000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="Ae3-7O-Trz">
-                                        <rect key="frame" x="0.0" y="108" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="128" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ae3-7O-Trz" id="Hkp-fC-8Ft">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1464,7 +1488,7 @@ Te Kura Mātai Pūkaha, Pūrorohiko</string>
                                         <color key="backgroundColor" red="0.89255583469999999" green="0.93625415700000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="dgu-BA-Ks6">
-                                        <rect key="frame" x="0.0" y="152" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="172" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dgu-BA-Ks6" id="e80-kA-V9z">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1498,7 +1522,7 @@ Te Kura Mātai Pūkaha, Pūrorohiko</string>
                                         <color key="backgroundColor" red="0.89255583469999999" green="0.93625415700000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="Kgo-Cm-3MI">
-                                        <rect key="frame" x="0.0" y="196" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="216" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Kgo-Cm-3MI" id="huS-x3-UQk">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1532,7 +1556,7 @@ Te Kura Mātai Pūkaha, Pūrorohiko</string>
                                         <color key="backgroundColor" red="0.89255583469999999" green="0.93625415700000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="eZJ-kM-xdQ">
-                                        <rect key="frame" x="0.0" y="240" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="260" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eZJ-kM-xdQ" id="Ph4-ER-oH1">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1566,7 +1590,7 @@ Te Kura Mātai Pūkaha, Pūrorohiko</string>
                                         <color key="backgroundColor" red="0.89255583469999999" green="0.93625415700000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="qDo-pW-X6g">
-                                        <rect key="frame" x="0.0" y="284" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="304" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qDo-pW-X6g" id="x2c-l5-bdW">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -1625,6 +1649,7 @@ Te Kura Mātai Pūkaha, Pūrorohiko</string>
                         <outlet property="lastnameField" destination="Eqz-1x-nm3" id="jdd-mO-seB"/>
                         <outlet property="passwordError" destination="oW6-sW-ucJ" id="Cp1-0w-JEh"/>
                         <outlet property="passwordField" destination="ffm-eG-VUE" id="Fds-9X-Oz5"/>
+                        <outlet property="spinner" destination="4hE-hO-qxf" id="DLB-C1-CoC"/>
                         <outlet property="usernameError" destination="xc0-gB-EXW" id="0DY-1r-U8Q"/>
                         <outlet property="usernameField" destination="bKw-BE-Pk5" id="csK-c4-lMz"/>
                     </connections>

@@ -9,15 +9,22 @@
 import UIKit
 import SwiftyJSON
 
-class WidgetTableViewController: UITableViewController {
+class WidgetTableViewController: UITableViewController, UISearchBarDelegate {
 
     var rows : [JSON?] = []
     
+    var filteredRows : [JSON?] = []
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+    
+    var searchActive : Bool = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
-        self.searchDisplayController?.searchResultsTableView.register(WeatherWidgetCell.self, forCellReuseIdentifier: "WidgetCell")
+        searchBar.delegate = self
+
        
         self.refreshControl = UIRefreshControl()
         self.refreshControl?.addTarget(self, action: #selector(WidgetTableViewController.refreshTableContents), for: .valueChanged)
@@ -60,6 +67,7 @@ class WidgetTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
+        if searchActive { return filteredRows.count }
         return rows.count
     }
 
@@ -68,12 +76,22 @@ class WidgetTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "WidgetCell", for: indexPath) as! WeatherWidgetCell
 
-
-        cell.titleLabel.text = self.rows[indexPath.row]?["title"].description
-        cell.idLabel.text = self.rows[indexPath.row]?["apiid"].description
-        cell.statusLabel.text = self.rows[indexPath.row]?["status"].description
-        cell.descriptionLabel.text = self.rows[indexPath.row]?["description"].description
-        cell.priceLabel.text = self.rows[indexPath.row]?["price"].description
+        if searchActive{
+            
+            cell.titleLabel.text = self.filteredRows[indexPath.row]?["title"].description
+            cell.idLabel.text = self.filteredRows[indexPath.row]?["apiid"].description
+            cell.statusLabel.text = self.filteredRows[indexPath.row]?["status"].description
+            cell.descriptionLabel.text = self.filteredRows[indexPath.row]?["description"].description
+            cell.priceLabel.text = self.filteredRows[indexPath.row]?["price"].description
+        }
+        else{
+            
+            cell.titleLabel.text = self.rows[indexPath.row]?["title"].description
+            cell.idLabel.text = self.rows[indexPath.row]?["apiid"].description
+            cell.statusLabel.text = self.rows[indexPath.row]?["status"].description
+            cell.descriptionLabel.text = self.rows[indexPath.row]?["description"].description
+            cell.priceLabel.text = self.rows[indexPath.row]?["price"].description
+        }
         
         if cell.statusLabel.text == "free" {
          
@@ -114,6 +132,48 @@ class WidgetTableViewController: UITableViewController {
             
             self.tableView.reloadData()
         }
+    }
+
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+   
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchActive = false;
+        self.view.endEditing(true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        filteredRows = self.rows.filter{
+            
+            return ($0?["title"].description.lowercased().contains((searchBar.text?.lowercased())!))! ||
+            ($0?["description"].description.lowercased().contains((searchBar.text?.lowercased())!))!
+        }
+       
+            searchActive = true
+        self.tableView.reloadData()
+    }
+    
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        
+        searchActive = false
+        self.tableView.reloadData()
+        return true
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar){
+        searchActive = false
+        self.tableView.reloadData()
+        self.view.endEditing(true)
+
+
     }
 
 }

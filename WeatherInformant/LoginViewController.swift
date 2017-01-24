@@ -11,6 +11,7 @@ import SwiftyJSON
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -35,7 +36,8 @@ class LoginViewController: UIViewController {
         
         super.viewDidLoad()
         
-        
+        self.spinner.isHidden = true
+
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardDidShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardDidHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
@@ -60,12 +62,17 @@ class LoginViewController: UIViewController {
         if let username = usernameTextField.text {
             if let password = passwordTextField.text{
                 
+                self.spinner.isHidden = false
+                self.view.isUserInteractionEnabled = false
                 //attempt login
                 WeatherInformantBackendService.login(username: username,
                                                      password: password,
                                                      completionHandler: {
                                                         
                                                         user in
+                                                        
+                                                        self.spinner.isHidden = true
+                                                        self.view.isUserInteractionEnabled = true
                                                         
                                                         self.saveLoggedInUser(user: user)
                                                         

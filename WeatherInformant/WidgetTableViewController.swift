@@ -24,6 +24,7 @@ class WidgetTableViewController: UITableViewController, UISearchBarDelegate {
 
         
         searchBar.delegate = self
+        searchBar.showsCancelButton = true
 
        
         self.refreshControl = UIRefreshControl()
@@ -158,6 +159,10 @@ class WidgetTableViewController: UITableViewController, UISearchBarDelegate {
         }
        
             searchActive = true
+        if searchText == "" {
+            searchActive = false
+
+        }
         self.tableView.reloadData()
     }
     
@@ -169,12 +174,12 @@ class WidgetTableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar){
-        searchActive = false
-        self.tableView.reloadData()
+        
+        searchActive = false;
         self.view.endEditing(true)
 
-
     }
+   
 
 }
 

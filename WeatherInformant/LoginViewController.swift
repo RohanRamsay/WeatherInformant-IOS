@@ -108,6 +108,9 @@ class LoginViewController: UIViewController {
     
     func showAlertWith(message: String?){
         
+        self.spinner.isHidden = true
+        self.view.isUserInteractionEnabled = true
+        
         let alert = UIAlertController(title: message, message: nil, preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
